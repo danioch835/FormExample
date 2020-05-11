@@ -1,0 +1,39 @@
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" 
+          xmlns:form="http://www.springframework.org/tags/form" 
+          version="2.0">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <jsp:output omit-xml-declaration="yes"/>
+  
+  <style>.error{color:red;}</style>
+  
+  <h1>Simple form</h1>
+  
+    <form method="POST" action="/FormExample/form" >
+        <form:errors path="simpleForm.*" cssClass="error" element="div" />
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td>
+                  <form:input type="text" path="simpleForm.name" />
+                </td>
+            </tr>
+            <tr><td colspan="3"><p><form:errors path="simpleForm.name" cssClass="error" /></p></td></tr>
+            <tr>
+                <td>Birthday date:</td>
+                <td>
+                  <form:input type="date" path="simpleForm.birthDate" />
+                </td>
+            </tr>
+            <tr><td colspan="3"><p><form:errors path="simpleForm.birthDate" cssClass="error" /></p></td></tr>
+            <tr>
+                <td>Sex :</td>
+                <td colspan="3"><form:radiobuttons path="simpleForm.sex" items="${sexValues}" /></td>
+            </tr>
+            <tr><td><p><form:errors path="simpleForm.sex" cssClass="error" /></p></td></tr>
+            <tr>
+                <td colspan="3"><input type="submit" value="Submit"/></td>
+            </tr>
+        </table>
+    </form>
+  
+</jsp:root>

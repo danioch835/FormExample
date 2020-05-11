@@ -1,0 +1,44 @@
+<jsp:root xmlns:c="http://java.sun.com/jsp/jstl/core" 
+          xmlns:fn="http://java.sun.com/jsp/jstl/functions" 
+          xmlns:jsp="http://java.sun.com/JSP/Page" 
+          xmlns:spring="http://www.springframework.org/tags" 
+          xmlns:form="http://www.springframework.org/tags/form" 
+          xmlns:fmt="http://java.sun.com/jsp/jstl/fmt" 
+          xmlns:lang="http://www.osoz.pl/jsp/internationalization"
+          version="2.0">
+  <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+  <jsp:output omit-xml-declaration="yes"/>
+  
+  <style>.error{color:red;}</style>
+  
+  <h1>Simple form spring</h1>
+  
+    <form:form method="POST" action="/FormExample/form/spring" modelAttribute="form">
+        <form:errors path="*" cssClass="error" element="div" />
+        <table>
+            <tr>
+                <td>Name:</td>
+                <td>
+                  <form:input type="text" path="name" />
+                </td>
+            </tr>
+            <tr><td colspan="3"><p><form:errors path="name" cssClass="error" /></p></td></tr>
+            <tr>
+                <td>Birthday date:</td>
+                <td>
+                  <form:input type="date" path="birthDate" />
+                </td>
+            </tr>
+            <tr><td colspan="3"><p><form:errors path="birthDate" cssClass="error" /></p></td></tr>
+            <tr>
+                <td>Sex :</td>
+                <td><form:radiobuttons path="sex" items="${sexValues}" /></td>
+            </tr>
+            <tr><td colspan="3"><p><form:errors path="sex" cssClass="error" /></p></td></tr>
+            <tr>
+                <td colspan="3"><input type="submit" value="Submit" /></td>
+            </tr>
+        </table>
+    </form:form>
+  
+</jsp:root>
